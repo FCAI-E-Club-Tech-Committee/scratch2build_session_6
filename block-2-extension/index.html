@@ -1,13 +1,173 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>scratch2build_session_6</title>
-  <link rel="stylesheet" href="styles.css">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Discover Events · FCAI Activity Portal</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;700&family=Fraunces:ital,opsz,wght@0,9..144,500;0,9..144,700;1,9..144,500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <script src="script.js" defer></script>
 </head>
 <body>
-  
-<script src="script.js"></script>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <div class="topbar">
+    <p>Student Community Events &middot; Faculty of Computers and Artificial Intelligence</p>
+  </div>
+
+  <header class="site-header">
+    <div class="header-inner wrap">
+      <a class="brand" href="#">
+        <span class="brand-name">FCAI</span>
+        <span class="brand-sub">Activity Portal</span>
+      </a>
+      <nav class="site-nav" aria-label="Page sections">
+        <ul>
+          <li><a href="#discover">Discover</a></li>
+          <li><a href="#results">Events</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+    <section class="hero wrap" aria-labelledby="page-title">
+      <div class="hero-copy">
+        <p class="eyebrow">Event Discovery</p>
+        <h1 id="page-title">Find what&rsquo;s on across <em>the faculty.</em></h1>
+      </div>
+      <p class="lede">Contests, bootcamps and community nights from every FCAI student group in one place. Search by title, narrow by category, and find something worth showing up for.</p>
+    </section>
+
+    <section class="filters-band" id="discover" aria-label="Search and filter events">
+      <div class="wrap">
+        <div class="filters">
+          <div class="field field-search">
+            <label for="search-input">Search by title</label>
+            <input id="search-input" type="search" placeholder="Try &ldquo;Git&rdquo;, &ldquo;ICPC&rdquo; or &ldquo;Flutter&rdquo;" autocomplete="off">
+          </div>
+          <div class="field field-category">
+            <label for="category-select">Category</label>
+            <select id="category-select">
+              <option value="all">All Categories</option>
+              <option value="tech">Tech</option>
+              <option value="workshop">Workshop</option>
+              <option value="social">Social</option>
+            </select>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="results wrap" id="results" aria-labelledby="results-heading">
+      <h2 id="results-heading" class="visually-hidden">Event results</h2>
+
+      <div class="results-head">
+        <p id="active-counter" class="counter" aria-live="polite">Showing 8 of 8 Events</p>
+        <ul class="key" aria-label="Category colours">
+          <li><span class="swatch swatch-tech" aria-hidden="true"></span>Tech</li>
+          <li><span class="swatch swatch-workshop" aria-hidden="true"></span>Workshop</li>
+          <li><span class="swatch swatch-social" aria-hidden="true"></span>Social</li>
+        </ul>
+      </div>
+
+      <div class="events-grid" id="events-grid">
+        <article class="event-card" data-category="tech">
+          <div class="card-date" aria-hidden="true"><span class="day">08</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Tech</span>
+            <h3 class="card-title">ICPC Warm-Up Contest</h3>
+            <p class="card-desc">A two-hour timed contest with problems from past regionals. Teams of three, bring your own template notebook.</p>
+            <p class="card-meta">Sun 8 Nov &middot; 4:00 PM &middot; Lab 3</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="workshop">
+          <div class="card-date" aria-hidden="true"><span class="day">10</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Workshop</span>
+            <h3 class="card-title">Git &amp; GitHub for First-Years</h3>
+            <p class="card-desc">Branching, pull requests and merge conflicts, practised on a shared repository instead of slides.</p>
+            <p class="card-meta">Tue 10 Nov &middot; 2:00 PM &middot; Hall B</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="social">
+          <div class="card-date" aria-hidden="true"><span class="day">12</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Social</span>
+            <h3 class="card-title">Open Mic &amp; Board Games Night</h3>
+            <p class="card-desc">Short talks, songs or stand-up from anyone brave enough, followed by a tournament-grade round of Catan.</p>
+            <p class="card-meta">Thu 12 Nov &middot; 6:00 PM &middot; Student Lounge</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="tech">
+          <div class="card-date" aria-hidden="true"><span class="day">16</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Tech</span>
+            <h3 class="card-title">Machine Learning Study Circle</h3>
+            <p class="card-desc">A weekly walkthrough of one notebook or paper. This week: logistic regression written from scratch.</p>
+            <p class="card-meta">Mon 16 Nov &middot; 5:00 PM &middot; Room 205</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="workshop">
+          <div class="card-date" aria-hidden="true"><span class="day">18</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Workshop</span>
+            <h3 class="card-title">Flutter Mobile App Bootcamp</h3>
+            <p class="card-desc">Build and run a working to-do app on your own phone in one afternoon. Bring a laptop with the Flutter SDK installed.</p>
+            <p class="card-meta">Wed 18 Nov &middot; 10:00 AM &middot; Lab 1</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="tech">
+          <div class="card-date" aria-hidden="true"><span class="day">22</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Tech</span>
+            <h3 class="card-title">Cybersecurity CTF Night</h3>
+            <p class="card-desc">Capture-the-flag challenges in web exploitation, cryptography and forensics, with beginner-friendly hints on every level.</p>
+            <p class="card-meta">Sun 22 Nov &middot; 7:00 PM &middot; Lab 2</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="workshop">
+          <div class="card-date" aria-hidden="true"><span class="day">25</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Workshop</span>
+            <h3 class="card-title">CV &amp; LinkedIn Clinic</h3>
+            <p class="card-desc">Bring a draft and get it reviewed one-to-one by senior students and alumni who have been through the internship hunt.</p>
+            <p class="card-meta">Wed 25 Nov &middot; 1:00 PM &middot; Career Office</p>
+          </div>
+        </article>
+
+        <article class="event-card" data-category="social">
+          <div class="card-date" aria-hidden="true"><span class="day">30</span><span class="month">Nov</span></div>
+          <div class="card-body">
+            <span class="badge">Social</span>
+            <h3 class="card-title">Graduation Projects Mixer</h3>
+            <p class="card-desc">Final-year teams present their projects informally over coffee. A good place to find advice, or a future teammate.</p>
+            <p class="card-meta">Mon 30 Nov &middot; 5:30 PM &middot; Main Atrium</p>
+          </div>
+        </article>
+      </div>
+
+      <div id="empty-state" class="empty-state" hidden>
+        <span class="empty-mark" aria-hidden="true">0</span>
+        <h3 class="empty-title">Nothing on the calendar for that search.</h3>
+        <p>Try a shorter keyword, or switch the category back to All Categories.</p>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <p>FCAI E-Club &middot; Scratch2Build Week 3</p>
+      <p>Student community events platform</p>
+    </div>
+  </footer>
 </body>
 </html>
