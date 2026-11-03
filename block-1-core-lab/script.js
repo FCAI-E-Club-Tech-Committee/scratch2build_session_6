@@ -19,7 +19,6 @@
      .form-message.is-success   (optional green variant for success text)
    ===================================================================== */
 
-
 /* ---------------------------------------------------------------------
    STEP 1 · Select the DOM elements
    --------------------------------------------------------------------- */
@@ -37,7 +36,6 @@
 
 // TODO 3: Inside the handler, stop the browser from reloading the page.
 
-
 /* ---------------------------------------------------------------------
    STEP 3 · Validate the input
    --------------------------------------------------------------------- */
@@ -51,7 +49,6 @@
 //         Decide what to do if both fields are wrong: one message, or the
 //         first problem only?
 
-
 /* ---------------------------------------------------------------------
    STEP 4 · Show and clear validation messages
    --------------------------------------------------------------------- */
@@ -64,7 +61,6 @@
 
 // Optional: toggle the .is-success class to show a positive confirmation.
 //           Make sure a later error does not keep the success styling.
-
 
 /* ---------------------------------------------------------------------
    STEP 5 · Generate and append event cards
@@ -86,13 +82,11 @@
 
 // TODO 11: Append the finished card to the events container.
 
-
 /* ---------------------------------------------------------------------
    STEP 6 · Reset after success
    --------------------------------------------------------------------- */
 // TODO 12: After a successful submission, empty the form fields and put
 //          the cursor back in the title input so the next event is quick to add.
-
 
 /* ---------------------------------------------------------------------
    STEP 7 · Delete events with event delegation

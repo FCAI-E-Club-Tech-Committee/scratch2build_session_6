@@ -1,4 +1,3 @@
-
 /* =====================================================================
    Block 2 · Search & Category Filtering
    Scratch2Build Week 3 · FCAI E-Club
@@ -21,7 +20,6 @@
    so you can show and hide cards and the empty state with it.
    ===================================================================== */
 
-
 /* ---------------------------------------------------------------------
    STEP 1 · Select the DOM elements
    --------------------------------------------------------------------- */
@@ -30,7 +28,6 @@
 // TODO 1b: Select ALL event cards as a collection you can loop over.
 //          Log the collection's length. It should match the number of
 //          cards on the page.
-
 
 /* ---------------------------------------------------------------------
    STEP 2 · Read the current filters
@@ -42,7 +39,6 @@
 // TODO 3: Inside it, read the current search text and the selected category.
 //         Prepare the search text so that "GIT", " git " and "Git"
 //         all behave the same way.
-
 
 /* ---------------------------------------------------------------------
    STEP 3 · Loop through the cards
@@ -63,7 +59,6 @@
 //         Test the combination: search "git" with Social selected. What
 //         should happen?
 
-
 /* ---------------------------------------------------------------------
    STEP 4 · Update the counter and the empty state
    --------------------------------------------------------------------- */
@@ -73,7 +68,6 @@
 
 // TODO 9: If no cards are visible, reveal the empty state.
 //         Otherwise make sure it is hidden again.
-
 
 /* ---------------------------------------------------------------------
    STEP 5 · Listen for changes
