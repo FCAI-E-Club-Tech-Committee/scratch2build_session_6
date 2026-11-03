@@ -38,7 +38,11 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-h1, h2, h3, p, ul {
+h1,
+h2,
+h3,
+p,
+ul {
   margin: 0;
 }
 
@@ -458,11 +462,11 @@ ul {
   .layout {
     grid-template-columns: minmax(0, 1fr);
   }
-  
+
   .publish {
     position: static;
   }
-  
+
   .filter-toolbar {
     grid-template-columns: minmax(0, 1fr);
   }
