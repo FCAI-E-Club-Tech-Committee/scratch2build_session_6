@@ -1,91 +1,104 @@
-
 /* =====================================================================
    Block 2 · Search & Category Filtering
    Scratch2Build Week 3 · FCAI E-Club
-
-   The HTML and CSS are finished. Your job is to make the filters work.
-   Work through the steps in order, testing in the browser after each one.
-
-   Ids available in index.html:
-     #search-input     the search field
-     #category-select  the category dropdown (all / tech / workshop / social)
-     #active-counter   the results counter text
-     #empty-state      the "no matches" message (hidden to begin with)
-
-   Each event has:
-     .event-card       the whole card
-     .card-title       the event title
-     data-category     "tech", "workshop" or "social" (read from the card)
-
-   The CSS hides any element that has the "hidden" attribute,
-   so you can show and hide cards and the empty state with it.
    ===================================================================== */
-
 
 /* ---------------------------------------------------------------------
    STEP 1 · Select the DOM elements
    --------------------------------------------------------------------- */
 // TODO 1: Store references to the search input, the category select, the
 //         counter and the empty state.
-// TODO 1b: Select ALL event cards as a collection you can loop over.
-//          Log the collection's length. It should match the number of
-//          cards on the page.
+const searchInput = document.querySelector("#search-input");
+const categorySelect = document.querySelector("#category-select");
+const activeCounter = document.querySelector("#active-counter");
+const emptyState = document.querySelector("#empty-state");
+const task2EventsContainer = document.querySelector("#events-container");
 
+// TODO 1b: Select ALL event cards as a collection you can loop over.
+const initialCards = document.querySelectorAll(".event-card");
+console.log("Total initial event cards:", initialCards.length);
 
 /* ---------------------------------------------------------------------
    STEP 2 · Read the current filters
    --------------------------------------------------------------------- */
 // TODO 2: Create a function that runs the whole filtering process.
-//         Everything below happens inside it, so that typing and
-//         changing the category both call the same code.
+function filterEvents() {
+  // TODO 3: Read the current search text and the selected category.
+  const searchText = searchInput.value.trim().toLowerCase();
+  const selectedCategory = categorySelect.value;
 
-// TODO 3: Inside it, read the current search text and the selected category.
-//         Prepare the search text so that "GIT", " git " and "Git"
-//         all behave the same way.
+  // Dynamically select current cards in the DOM to account for dynamic adds/deletes
+  const currentCards = task2EventsContainer
+    ? task2EventsContainer.querySelectorAll(".event-card")
+    : document.querySelectorAll(".event-card");
 
+  /* ---------------------------------------------------------------------
+     STEP 3 · Loop through the cards
+     --------------------------------------------------------------------- */
+  let visibleCount = 0;
 
-/* ---------------------------------------------------------------------
-   STEP 3 · Loop through the cards
-   --------------------------------------------------------------------- */
-// TODO 4: Loop through every event card.
-//         For each card, read its title text and its category.
+  // TODO 4: Loop through every event card.
+  currentCards.forEach(function (card) {
+    const title = card.querySelector(".card-title")
+      ? card.querySelector(".card-title").textContent.toLowerCase()
+      : "";
+    const category =
+      card.dataset.category || card.getAttribute("data-category");
 
-// TODO 5: Compare the lowercase title with the lowercase search text,
-//         using toLowerCase() and includes().
-//         Question: what should an empty search match?
+    // TODO 5: Compare the lowercase title with the lowercase search text
+    const matchesSearch = title.includes(searchText);
 
-// TODO 6: Check whether the card's category matches the selected one.
-//         "all" is a special value that means every category is allowed.
+    // TODO 6: Check whether the card's category matches the selected one
+    const matchesCategory =
+      selectedCategory === "all" || category === selectedCategory;
 
-// TODO 7: A card is visible only if BOTH checks pass.
-//         Show or hide it accordingly, and keep a running count of how
-//         many cards are visible.
-//         Test the combination: search "git" with Social selected. What
-//         should happen?
+    // TODO 7: A card is visible only if BOTH checks pass
+    const isVisible = matchesSearch && matchesCategory;
 
+    if (isVisible) {
+      card.removeAttribute("hidden");
+      visibleCount++;
+    } else {
+      card.setAttribute("hidden", "");
+    }
+  });
 
-/* ---------------------------------------------------------------------
-   STEP 4 · Update the counter and the empty state
-   --------------------------------------------------------------------- */
-// TODO 8: After the loop, write the counter text in the exact format:
-//         "Showing X of Y Events"
-//         X is the number of visible cards, Y is the total number of cards.
+  /* ---------------------------------------------------------------------
+     STEP 4 · Update the counter and the empty state
+     --------------------------------------------------------------------- */
+  // TODO 8: Write the counter text in the exact format: "Showing X of Y Events"
+  if (activeCounter) {
+    activeCounter.textContent = `Showing ${visibleCount} of ${currentCards.length} Events`;
+  }
 
-// TODO 9: If no cards are visible, reveal the empty state.
-//         Otherwise make sure it is hidden again.
-
+  // TODO 9: Reveal or hide the empty state
+  if (emptyState) {
+    if (visibleCount === 0) {
+      emptyState.removeAttribute("hidden");
+    } else {
+      emptyState.setAttribute("hidden", "");
+    }
+  }
+}
 
 /* ---------------------------------------------------------------------
    STEP 5 · Listen for changes
    --------------------------------------------------------------------- */
-// TODO 10: Run your filtering function every time the user types in the
-//          search field. Use the event that fires on every keystroke,
-//          not one that waits for the field to lose focus.
+// TODO 10: Run filtering when the user types in the search field
+if (searchInput) {
+  searchInput.addEventListener("input", filterEvents);
+}
 
-// TODO 11: Run the same function when the category dropdown changes.
+// TODO 11: Run filtering when the category dropdown changes
+if (categorySelect) {
+  categorySelect.addEventListener("change", filterEvents);
+}
 
-// TODO 12: Think about the starting state: the page loads with everything
-//          visible and the counter already correct. Do you need to run the
-//          function once on load, or is the HTML already right?
-//          Test by refreshing the page after typing, since some browsers
-//          restore the old input value.
+// Automatically re-filter whenever event cards are added or removed dynamically
+if (task2EventsContainer) {
+  const observer = new MutationObserver(filterEvents);
+  observer.observe(task2EventsContainer, { childList: true });
+}
+
+// TODO 12: Run once on load
+filterEvents();
